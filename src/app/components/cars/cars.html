@@ -1,11 +1,33 @@
 @let _cars = cars();
 
-Filter By:
-<select>
-  <option value="1">Model Name</option>
-  <option value="2">Date Born</option>
-  <option value="3">Color</option>
+Model:
+<select (change)="onChanged($event,modelFilter)">
+  <option value="">all</option>
+  @for (model of models(); track model) {
+    <option value="{{ model }}">{{ model }}</option>
+  }
 </select>
+
+Color:
+<select (change)="onChanged($event,colorsFilter)">
+  <option value="">all</option>
+  @for (color of colors(); track color) {
+    <option value="{{ color }}">{{ color }}</option>
+  }
+</select>
+
+Color:
+<select (change)="onChangedYear($event)">
+  <option value="0">all</option>
+  @for (year of years(); track year) {
+    <option value="{{ year }}">{{ year }}</option>
+  }
+</select>
+
+
+Search:
+<input [formControl]="searchControl" type="text">
+
 
 @if (_cars) {
   <table>
@@ -17,10 +39,10 @@ Filter By:
     </tr>
     @for (_car of _cars; track _car.name) {
       <tr>
-        <td>{{_car.name}}</td>
-        <td>{{_car.model}}</td>
-        <td>{{_car.color}}</td>
-        <td>{{_car.year}}</td>
+        <td>{{ _car.name }}</td>
+        <td>{{ _car.model }}</td>
+        <td>{{ _car.color }}</td>
+        <td>{{ _car.year }}</td>
       </tr>
     }
   </table>

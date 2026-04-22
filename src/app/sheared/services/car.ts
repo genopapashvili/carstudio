@@ -15,6 +15,8 @@ export interface CarLike {
 export class Car {
 
 
+
+
   getCars() {
     return cars
       .pipe(map(it => it.data))

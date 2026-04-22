@@ -1,0 +1,27 @@
+@let _cars = cars();
+
+Filter By:
+<select>
+  <option value="1">Model Name</option>
+  <option value="2">Date Born</option>
+  <option value="3">Color</option>
+</select>
+
+@if (_cars) {
+  <table>
+    <tr>
+      <td>Name</td>
+      <td>Model</td>
+      <td>Color</td>
+      <td>Year</td>
+    </tr>
+    @for (_car of _cars; track _car.name) {
+      <tr>
+        <td>{{_car.name}}</td>
+        <td>{{_car.model}}</td>
+        <td>{{_car.color}}</td>
+        <td>{{_car.year}}</td>
+      </tr>
+    }
+  </table>
+}
